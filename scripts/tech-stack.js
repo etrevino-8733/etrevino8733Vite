@@ -92,7 +92,6 @@ export function loadTechstack() {
 
     const progressBarContainer = document.querySelector('.progress-bar-container');
     loadingManager.onLoad = function(){
-        console.log('All assets loaded');
         if(progressBarContainer !== null){
             progressBarContainer.style.opacity = 0;
             setTimeout(() => {
@@ -105,22 +104,22 @@ export function loadTechstack() {
 
 
         const storeHiRes = new GLTFLoader(hiResLoader); 
-        storeHiRes.load('../assets/scenes/247_cyberpunk_store.glb', function( gltf ) {
-            gltf.scene.position.x = 0;
-            gltf.scene.position.y = 2;
-            gltf.scene.position.z = -20;
-            gltf.scene.rotation.y = -1.87;
-            gltf.scene.scale.set(10, 10, 10);
-            gltf.scene.name = "coffeeShop";
-            gltf.scene.traverse( function( node ) {
+        // storeHiRes.load('../assets/scenes/247_cyberpunk_store.glb', function( gltf ) {
+        //     gltf.scene.position.x = 0;
+        //     gltf.scene.position.y = 2;
+        //     gltf.scene.position.z = -20;
+        //     gltf.scene.rotation.y = -1.87;
+        //     gltf.scene.scale.set(10, 10, 10);
+        //     gltf.scene.name = "coffeeShop";
+        //     gltf.scene.traverse( function( node ) {
         
-            node.castShadow = true; 
-            node.receiveShadow = true;
+        //     node.castShadow = true; 
+        //     node.receiveShadow = true;
         
-        });
+        // });
         
-        scene.add( gltf.scene);
-        }, undefined, function ( error ) { console.error(error); });
+        // scene.add( gltf.scene);
+        // }, undefined, function ( error ) { console.error(error); });
 
         if(IsAboutMePage){
             APP_._LoadAnimatedModel();
