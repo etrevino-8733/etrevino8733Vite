@@ -64,7 +64,9 @@ const tertiaryColor = '#10403B';
 
 window.addEventListener('resize', onWindowResize, false);
 
-export function loadTechstack() {
+window.onload = loadTechstack;
+
+function loadTechstack() {
     const canvas = document.querySelector('#tech-stack');
 
     renderer = new THREE.WebGLRenderer({

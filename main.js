@@ -1,7 +1,4 @@
 import { welcomeMessage } from './scripts/welcome-message.js'
-import './libraries/TopNav/TopNav.js'
-import './scripts/tech-stack.js'
-import { loadTechstack } from './scripts/tech-stack.js'
 
 document.querySelector('#app').innerHTML = `
   <header class="header" style="position: fixed; width: 100%; margin: 0; padding: 10px">
@@ -36,5 +33,4 @@ document.querySelector('#app').innerHTML = `
 
 window.onload = () => {
     welcomeMessage();
-    loadTechstack();
 }
