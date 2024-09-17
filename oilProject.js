@@ -1,4 +1,3 @@
-import './style.css'
 import './libraries/TopNav/TopNav.js'
 import './oilProject.css'
 import { oilProjectGraphics } from './scripts/oilProjectGraphics.js'

@@ -1,4 +1,3 @@
-import './style.css'
 import { welcomeMessage } from './scripts/welcome-message.js'
 import './libraries/TopNav/TopNav.js'
 import './scripts/tech-stack.js'
