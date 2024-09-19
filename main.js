@@ -1,10 +1,11 @@
-import { welcomeMessage } from './scripts/welcome-message.js'
+// import { welcomeMessage } from './scripts/welcome-message.js'
+// import './libraries/TopNav/TopNav.js'
+// import './scripts/tech-stack.js'
+// import { loadTechstack } from './scripts/tech-stack.js'
+
+import { TestModule, techStack, welcomeMessage, BasicCharacterController } from "./utils";
 
 document.querySelector('#app').innerHTML = `
-  <header class="header" style="position: fixed; width: 100%; margin: 0; padding: 10px">
-    <et-top-nav nav-items='[{"name": "About Me", "link": "about-me.html"},{"name": "Projects", "link": "about-me.html#projects"}]'>
-    </et-top-nav>
-  </header>
   <div id="tech-stack-container" tabindex="1">
       <canvas id="tech-stack"></canvas>
       <div class="progress-bar-container">
@@ -30,7 +31,8 @@ document.querySelector('#app').innerHTML = `
       }
   </script>
 `
-
 window.onload = () => {
     welcomeMessage();
+    new techStack();  
+    // init.loadTechstack();  
 }
