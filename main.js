@@ -1,8 +1,3 @@
-// import { welcomeMessage } from './scripts/welcome-message.js'
-// import './libraries/TopNav/TopNav.js'
-// import './scripts/tech-stack.js'
-// import { loadTechstack } from './scripts/tech-stack.js'
-
 import { TestModule, techStack, welcomeMessage, BasicCharacterController } from "./utils";
 
 document.querySelector('#app').innerHTML = `
@@ -34,5 +29,4 @@ document.querySelector('#app').innerHTML = `
 window.onload = () => {
     welcomeMessage();
     new techStack();  
-    // init.loadTechstack();  
 }
