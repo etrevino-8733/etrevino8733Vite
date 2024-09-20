@@ -14,11 +14,7 @@ import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 
 import CoffeeShop from './scenes/247_cyberpunk_store_lowres.glb';
-// import NeonFont from './fonts/Tilt Neon_Regular.json';
-// import MichromaFont from './fonts/Michroma_Regular.json';
-
-// import {BasicCharacterController} from './characters.module.js';
-
+import { js } from 'three/webgpu';
 
 
 class paramaters{
@@ -62,11 +58,10 @@ class paramaters{
 export class techStack{    
     constructor(){
         this.params = new paramaters();
-        this._Init();
+        //this._Init();
     }
     
-    _Init(){
-        console.log('Tech Stack Init', this.params.loadingManager);
+    async _Init(){
         window.addEventListener('resize', () => {
             if(this.params.SCENECONTROLS_ === null) return;
             this.params.SCENECONTROLS_.camera.aspect = window.innerWidth / window.innerHeight;
@@ -76,7 +71,71 @@ export class techStack{
             this.params.SCENECONTROLS_.finalComposer.setSize(window.innerWidth , window.innerHeight);
         }), false;
 
-        this.loadTechstack();
+        const canvas = document.querySelector('#tech-stack');
+    
+        this.params.renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            antialias: true,
+          });
+        this.params.renderer.setPixelRatio(window.devicePixelRatio);
+        this.params.renderer.setSize( window.innerWidth , window.innerHeight );
+        this.params.renderer.shadowMap.enabled = true;
+        this.params.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.params.renderer.toneMapping = THREE.CineionToneMapping;
+        this.params.renderer.toneMappingExposure = 1.5;
+        this.params.renderer.outputEncoding = THREE.sRGBEncoding;
+        
+        const progressBar = document.getElementById('progress-bar');
+        if(progressBar !== null){
+            console.log(this.params.loadingManager);   
+            this.params.loadingManager.onProgress = function(url, loaded, total){
+                progressBar.value = (loaded / total) * 100;
+            }
+        }
+    
+    
+        const progressBarContainer = document.querySelector('.progress-bar-container');
+        this.params.loadingManager.onLoad = this.loadingManagerFunction(this.params, progressBarContainer);
+        // this.params.loadingManager.onLoad = this.onLoadingManager(progressBarContainer);
+        // this.params.loadingManager.onLoad = function(myParams = this.params){
+        //     console.log('onLoadingManager', myParams);
+        //     if(this.progressBarContainer !== null){
+        //         progressBarContainer.style.opacity = 0;
+        //         setTimeout(() => {
+        //             if(!this.IsAboutMePage) params.SCENECONTROLS_.centerCamera(10); else this.flickerStack();
+        //             progressBarContainer.style.display = 'none';
+        //         }, 1000);
+        //     } else{
+        //         this.flickerStack();
+        //     }
+    
+    
+        //     // const storeHiRes = new GLTFLoader(this.params.hiResLoader); 
+        //     // storeHiRes.load('../assets/scenes/247_cyberpunk_store.glb', function( gltf ) {
+        //     //     gltf.scene.position.x = 0;
+        //     //     gltf.scene.position.y = 2;
+        //     //     gltf.scene.position.z = -20;
+        //     //     gltf.scene.rotation.y = -1.87;
+        //     //     gltf.scene.scale.set(10, 10, 10);
+        //     //     gltf.scene.name = "coffeeShop";
+        //     //     gltf.scene.traverse( function( node ) {
+            
+        //     //     node.castShadow = true; 
+        //     //     node.receiveShadow = true;
+            
+        //     // });
+            
+        //     // scene.add( gltf.scene);
+        //     // }, undefined, function ( error ) { console.error(error); });
+    
+        //     if(paramaters.IsAboutMePage){
+        //         this.params.APP_._LoadAnimatedModel();
+        //     }else{
+        //         // this.params.hiResLoader.onLoad = function(){
+        //         //     this.params.scene.remove(scene.children.find((child) => child.name === 'coffeeShop_lores'));
+        //         // }
+        //     }
+        // };
     };
 
 
@@ -95,39 +154,8 @@ export class techStack{
             delete materials[obj.uuid];
         }
     }
-    
-    
-    
-    loadTechstack() {
-        const canvas = document.querySelector('#tech-stack');
-    
-        this.params.renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            antialias: true,
-          });
-        this.params.renderer.setPixelRatio(window.devicePixelRatio);
-        this.params.renderer.setSize( window.innerWidth , window.innerHeight );
-        this.params.renderer.shadowMap.enabled = true;
-        this.params.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        this.params.renderer.toneMapping = THREE.CineionToneMapping;
-        this.params.renderer.toneMappingExposure = 1.5;
-        this.params.renderer.outputEncoding = THREE.sRGBEncoding;
-    
-        console.log('Tech Stack Loaded');
-    
-        const progressBar = document.getElementById('progress-bar');
-        if(progressBar !== null){
-            console.log('Progress Bar Found');
-            console.log(this.params.loadingManager);   
-            this.params.loadingManager.onProgress = function(url, loaded, total){
-                progressBar.value = (loaded / total) * 100;
-            }
-        }
-    
-    
-        const progressBarContainer = document.querySelector('.progress-bar-container');
-        this.params.loadingManager.onLoad = this.onLoadingManager(progressBarContainer);
-    
+
+    async triggerTechStack(){
         this.params.IsAboutMePage = document.querySelector('.home-bg') !== null;
         this.params.APP_ = new MyWorld(this.params);
         this.params.SCENECONTROLS_ = new SceneControls(this.params);
@@ -148,21 +176,20 @@ export class techStack{
         
         let updateAssetBtn = document.querySelector('.release-the-moster');
         if(updateAssetBtn !== null){
-            console.log(updateAssetBtn);
             updateAssetBtn.addEventListener('click', function(){
                 //APP_._LoadAnimatedModel();
                 this.params.APP_._myCharacter.ReleaseMonster();
                 updateAssetBtn.style.display = 'none';
             });
         }
-    };
+    }
 
-    onLoadingManager(progressBarContainer){
-        console.log("testing this", this.params)
-            if(this.progressBarContainer !== null){
+    loadingManagerFunction(params, progressBarContainer){
+        return function () {
+            if(progressBarContainer !== null){
                 progressBarContainer.style.opacity = 0;
                 setTimeout(() => {
-                    if(!this.IsAboutMePage) this.params.SCENECONTROLS_.centerCamera(10); else this.flickerStack();
+                    if(!params.IsAboutMePage) params.SCENECONTROLS_.centerCamera(10); else this.flickerStack();
                     progressBarContainer.style.display = 'none';
                 }, 1000);
             } else{
@@ -195,7 +222,49 @@ export class techStack{
                 //     this.params.scene.remove(scene.children.find((child) => child.name === 'coffeeShop_lores'));
                 // }
             }
+        }
+
     }
+
+    // onLoadingManager(progressBarContainer){
+    //     console.log('onLoadingManager');
+    //         if(this.progressBarContainer !== null){
+    //             progressBarContainer.style.opacity = 0;
+    //             setTimeout(() => {
+    //                 if(!this.IsAboutMePage) this.params.SCENECONTROLS_.centerCamera(10); else this.flickerStack();
+    //                 progressBarContainer.style.display = 'none';
+    //             }, 1000);
+    //         } else{
+    //             this.flickerStack();
+    //         }
+    
+    
+    //         // const storeHiRes = new GLTFLoader(this.params.hiResLoader); 
+    //         // storeHiRes.load('../assets/scenes/247_cyberpunk_store.glb', function( gltf ) {
+    //         //     gltf.scene.position.x = 0;
+    //         //     gltf.scene.position.y = 2;
+    //         //     gltf.scene.position.z = -20;
+    //         //     gltf.scene.rotation.y = -1.87;
+    //         //     gltf.scene.scale.set(10, 10, 10);
+    //         //     gltf.scene.name = "coffeeShop";
+    //         //     gltf.scene.traverse( function( node ) {
+            
+    //         //     node.castShadow = true; 
+    //         //     node.receiveShadow = true;
+            
+    //         // });
+            
+    //         // scene.add( gltf.scene);
+    //         // }, undefined, function ( error ) { console.error(error); });
+    
+    //         if(paramaters.IsAboutMePage){
+    //             this.params.APP_._LoadAnimatedModel();
+    //         }else{
+    //             // this.params.hiResLoader.onLoad = function(){
+    //             //     this.params.scene.remove(scene.children.find((child) => child.name === 'coffeeShop_lores'));
+    //             // }
+    //         }
+    // }
     
     animate(){
         requestAnimationFrame((t) => {

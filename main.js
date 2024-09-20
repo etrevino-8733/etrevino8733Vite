@@ -1,4 +1,4 @@
-import { TestModule, techStack, welcomeMessage, BasicCharacterController } from "./utils";
+import { techStack, welcomeMessage } from "./utils";
 
 document.querySelector('#app').innerHTML = `
   <div id="tech-stack-container" tabindex="1">
@@ -26,7 +26,12 @@ document.querySelector('#app').innerHTML = `
       }
   </script>
 `
-window.onload = () => {
+window.onload = async () => {
     welcomeMessage();
-    new techStack();  
 }
+
+window.addEventListener('DOMContentLoaded', async () => {
+    var scene = new techStack();
+    scene._Init();
+    await scene.triggerTechStack();
+});
