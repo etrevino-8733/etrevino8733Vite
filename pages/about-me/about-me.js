@@ -14,7 +14,7 @@ document.querySelector('#app').innerHTML = `
         </div>
     </div>
     <header class="header">
-        <et-top-nav nav-items='[{"name": "Home", "link": "/index.html"}, {"name": "About Me", "link": "./pages/about-me/about-me.html"},{"name": "Projects", "link": "#projects"}]'>
+        <et-top-nav nav-items='[{"name": "Home", "link": "/index.html"}, {"name": "About Me", "link": "/pages/about-me/about-me.html"},{"name": "Projects", "link": "#projects"}]'>
         </et-top-nav>
     </header>
     <span class="scroll-icon">
