@@ -1,6 +1,6 @@
 import './libraries/TopNav/TopNav.js'
 import './oilProject.css'
-import { oilProjectGraphics } from './scripts/oilProjectGraphics.js'
+import { oilProjectGraphics } from '../../scripts/oilProjectGraphics.js'
 
 document.querySelector('#app').innerHTML = `
     <main>

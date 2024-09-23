@@ -1,7 +1,6 @@
-import { welcomeMessage } from './scripts/welcome-message.js'
-import './libraries/TopNav/TopNav.js'
-import './scripts/tech-stack.js'
-import { loadTechstack } from './scripts/tech-stack.js'
+import { techStack, welcomeMessage } from "/utils";
+import * as TopNav from "/utils/TopNav/topNav.module";
+import * as TopNavStyle from "/utils/TopNav/topNavStyle.module";
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -15,7 +14,7 @@ document.querySelector('#app').innerHTML = `
         </div>
     </div>
     <header class="header">
-        <et-top-nav nav-items='[{"name": "Home", "link": "index.html"}, {"name": "About Me", "link": "about-me.html"},{"name": "Projects", "link": "#projects"}]'>
+        <et-top-nav nav-items='[{"name": "Home", "link": "/index.html"}, {"name": "About Me", "link": "./pages/about-me/about-me.html"},{"name": "Projects", "link": "#projects"}]'>
         </et-top-nav>
     </header>
     <span class="scroll-icon">
@@ -185,7 +184,9 @@ document.querySelector('#app').innerHTML = `
     </script>
 `
 
-window.onload = () => {
+window.onload = async () => {
     welcomeMessage();
-    loadTechstack();
+    var scene = new techStack();
+    scene._Init();
+    await scene.triggerTechStack();
 }
