@@ -39,7 +39,7 @@ document.querySelector('#app').innerHTML = `
             <p>This is a feature from the software software I build for an oil company that specializes in scanning and inspecting pipes used in oil wells.  
                 My software helped the client manage and share detaild data of the pitting and rodware for each pipe they scaned at each location. 
                 The software also allowed my client to share the scan data with their customers. Each of their customers had an account on the web application where they could request scan jobs, view invoices through an integration with Quickbooks, and generate reports for each of their well locations.</p>
-            <a class="project-btn" href="/pages/oil-project/oil-project.html">View Feature</a>
+            <a class="project-btn" href="./oilProject.html">View Feature</a>
         </div>
         <h1>Projects</h1>
     </section>
