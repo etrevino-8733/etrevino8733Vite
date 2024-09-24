@@ -9,6 +9,7 @@ export default {
             input: {
                 main: './index.html',
                 aboutme: resolve(__dirname, 'pages/about-me/about-me.html'),
+                oilproject: resolve(__dirname, 'pages/oil-project/oil-project.html'),
             }
         }
     }
