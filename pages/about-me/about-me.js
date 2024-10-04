@@ -47,39 +47,55 @@ document.querySelector('#app').innerHTML = `
         <h1>Tech Stack</h1>
         <div class="stack-container">
             <div class="stack-card glow-on-hover">
-                <h2>Frontend</h2>
+                <h2>Languages</h2>
                 <ul>
                     <li class="stack-element">HTML</li>
-                    <li class="stack-element">Sass</li>
+                    <li class="stack-element">CSS</li>
                     <li class="stack-element">JavaScript</li>
                     <li class="stack-element">TypeScript</li>
-                    <li class="stack-element">Angular</li>
-                    <li class="stack-element">Web Components</li>
-                    <li class="stack-element">RxJS</li>
-                    <li class="stack-element">jQuery</li>
-                    <li class="stack-element">AJAX</li>
-                    <li class="stack-element">NX</li>
-                </ul>
-            </div>
-            <div class="stack-card glow-on-hover">
-                <h2>Backend</h2>
-                <ul>
                     <li class="stack-element">C#</li>
-                    <li class="stack-element">Node.js</li>
-                    <li class="stack-element">.Net 8</li>
-                    <li class="stack-element">Docker</li>
-                    <li class="stack-element">Microservices</li>
-                    <li class="stack-element">REST APIs</li>
-                    <li class="stack-element">Swagger / Open API</li>
-                    <li class="stack-element">Entity Framework</li>
-                    <li class="stack-element">Azure</li>
+                    <li class="stack-element">SQL</li>
                 </ul>
             </div>
             <div class="stack-card glow-on-hover">
-                <h2>Database</h2>
+                <h2>Frameworks</h2>
                 <ul>
-                    <li class="stack-element">SQL</li>
-                    <li class="stack-element">MongoDB</li>
+                    <li class="stack-element">.NET</li>
+                    <li class="stack-element">ASP.NET</li>
+                    <li class="stack-element">ANGULAR</li>
+                    <li class="stack-element">Razor Pages</li>
+                    <li class="stack-element">NUnit</li>
+                </ul>
+            </div>
+            <div class="stack-card glow-on-hover">
+                <h2>Libraries</h2>
+                <ul>
+                    <li class="stack-element">RxJS</li>
+                    <li class="stack-element">JQuery</li>
+                    <li class="stack-element">Bootstrap</li>
+                    <li class="stack-element">PrimeNg</li>
+                </ul>
+            </div>
+            <div class="stack-card glow-on-hover">
+                <h2>Tools</h2>
+                <ul>
+                    <li class="stack-element">Microsoft Sql Server Management Studio</li>
+                    <li class="stack-element">Swagger/Open API</li>
+                    <li class="stack-element">Entity Framework</li>
+                    <li class="stack-element">Node.js</li>
+                    <li class="stack-element">NX</li>
+                    <li class="stack-element">Git</li>
+                    <li class="stack-element">DevOps</li>
+                    <li class="stack-element">Selenium</li>
+                    <li class="stack-element">Figma</li>
+                </ul>
+            </div>
+            <div class="stack-card glow-on-hover">
+                <h2>Platforms</h2>
+                <ul>
+                    <li class="stack-element">Web Components</li>
+                    <li class="stack-element">Docker</li>
+                    <li class="stack-element">Azure</li>
                 </ul>
             </div>
         </div>
@@ -94,78 +110,7 @@ document.querySelector('#app').innerHTML = `
     <script type="text/javascript">
 
 
-        document.addEventListener('DOMContentLoaded', () => {
-            let stackItems = document.querySelectorAll('.stack-element');
-            let stackItemsCoor = new Object();
-            setItems(stackItems, stackItemsCoor);
-            let stackCards = document.querySelector('.stack-card');
-            let stackItemTop = stackCards.getBoundingClientRect().top;
-            document.querySelector('.scroll-icon').style.opacity = '1';
 
-            function trickleStackEventListener(event, callback){
-                const wrapper = e => {
-                        callback(e, () => document.removeEventListener(event, wrapper));
-                    }
-                document.addEventListener(event, wrapper);
-            }
-
-            document.querySelector('.danger-button').addEventListener('mouseover', (e) => {
-                console.log('hover');
-                e.target.innerHTML = "DON'T DO IT!";
-            });
-            document.querySelector('.danger-button').addEventListener('mouseout', (e) => {
-                e.target.innerHTML = "DO NOT CLICK!";
-            });
-
-            
-            trickleStackEventListener('scroll', (e, closeListener) => {
-                let stackItemTop = stackItems[0].getBoundingClientRect().top;
-                let windowBottom = window.innerHeight;
-
-                if(window.scrollY > 20) {
-                    let scrollIcon = document.querySelector('.scroll-icon');
-                    scrollIcon.style.opacity = '0';
-                };
-
-                if(windowBottom > stackItemTop){
-                    for(let key in stackItemsCoor){
-                        moveItems(stackItemsCoor[key]);
-                    }
-                    let stackContainer = document.querySelector('.stack-container');
-                    stackContainer.style.height = 'auto';
-                    closeListener();
-                }
-
-                if(windowBottom < stackItemTop){
-                    setItems(stackItems, stackItemsCoor);
-                }
-            });
-        });
-
-        function moveItems(item){
-            let transitionSeconds = Math.floor(Math.random() * (1 - 1.5) + 1.5);
-            item.element.style.transition = 'transform '+ transitionSeconds + 's';
-            item.element.style.transitionTimingFunction = 'ease-out';
-            item.element.style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';            
-        }
-
-        async function setItems(stackItems, stackItemsCoor){
-            let bodyRect = document.body.getBoundingClientRect();
-            let stackContainer = document.querySelector('.stack-container');
-            stackContainer.style.height = stackContainer.getBoundingClientRect().height + 'px';
-
-            for(let i = 0; i < stackItems.length; i++){
-                let item = stackItems[i];
-                let xtrans = Math.floor(Math.random() * (-5000 - -window.innerWidth) +  -window.innerWidth);
-                // let xtrans = Math.floor(Math.random() * (-window.innerWidth - -1000) +  -1000);
-
-                stackItemsCoor[item.textContent] = {
-                    element: item,
-                }
-                stackItemsCoor[item.textContent].element.style.transition = 'transform 0s';
-                stackItemsCoor[item.textContent].element.style.transform = 'translate(' + xtrans + 'px, ' + 0 + 'px)';
-            }
-        }
     </script>
     <script defer id="vertexshader" type="vertex">
         varying vec2 vUv;
@@ -189,4 +134,78 @@ window.onload = async () => {
     var scene = new techStack();
     scene._Init();
     await scene.triggerTechStack();
+
+
+}
+document.addEventListener('DOMContentLoaded', () => {
+    let stackItems = document.querySelectorAll('.stack-element');
+    let stackItemsCoor = new Object();
+    setItems(stackItems, stackItemsCoor);
+    let stackCards = document.querySelector('.stack-card');
+    let stackItemTop = stackCards.getBoundingClientRect().top;
+    document.querySelector('.scroll-icon').style.opacity = '1';
+
+    function trickleStackEventListener(event, callback){
+        const wrapper = e => {
+                callback(e, () => document.removeEventListener(event, wrapper));
+            }
+        document.addEventListener(event, wrapper);
+    }
+
+    document.querySelector('.danger-button').addEventListener('mouseover', (e) => {
+        console.log('hover');
+        e.target.innerHTML = "DON'T DO IT!";
+    });
+    document.querySelector('.danger-button').addEventListener('mouseout', (e) => {
+        e.target.innerHTML = "DO NOT CLICK!";
+    });
+
+    
+    trickleStackEventListener('scroll', (e, closeListener) => {
+        let stackItemTop = stackItems[0].getBoundingClientRect().top;
+        let windowBottom = window.innerHeight;
+
+        if(window.scrollY > 20) {
+            let scrollIcon = document.querySelector('.scroll-icon');
+            scrollIcon.style.opacity = '0';
+        };
+
+        if(windowBottom > stackItemTop){
+            for(let key in stackItemsCoor){
+                moveItems(stackItemsCoor[key]);
+            }
+            let stackContainer = document.querySelector('.stack-container');
+            stackContainer.style.height = 'auto';
+            closeListener();
+        }
+
+        if(windowBottom < stackItemTop){
+            setItems(stackItems, stackItemsCoor);
+        }
+    });
+});
+
+function moveItems(item){
+    let transitionSeconds = Math.floor(Math.random() * (1 - 1.5) + 1.5);
+    item.element.style.transition = 'transform '+ transitionSeconds + 's';
+    item.element.style.transitionTimingFunction = 'ease-out';
+    item.element.style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';            
+}
+
+async function setItems(stackItems, stackItemsCoor){
+    let bodyRect = document.body.getBoundingClientRect();
+    let stackContainer = document.querySelector('.stack-container');
+    stackContainer.style.height = stackContainer.getBoundingClientRect().height + 'px';
+
+    for(let i = 0; i < stackItems.length; i++){
+        let item = stackItems[i];
+        let xtrans = Math.floor(Math.random() * (-5000 - -window.innerWidth) +  -window.innerWidth);
+        // let xtrans = Math.floor(Math.random() * (-window.innerWidth - -1000) +  -1000);
+
+        stackItemsCoor[item.textContent] = {
+            element: item,
+        }
+        stackItemsCoor[item.textContent].element.style.transition = 'transform 0s';
+        stackItemsCoor[item.textContent].element.style.transform = 'translate(' + xtrans + 'px, ' + 0 + 'px)';
+    }
 }
