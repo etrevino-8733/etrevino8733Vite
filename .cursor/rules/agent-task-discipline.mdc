@@ -1,0 +1,21 @@
+---
+description: Agent task discipline - scope, clarification, incremental implementation
+alwaysApply: true
+---
+
+# Agent Task Discipline
+
+## Scope
+
+- **Never change code that was not asked for.** Only modify what the user requested.
+- Do not add "improvements," refactors, or fixes unless explicitly requested.
+
+## Clarification Over Assumptions
+
+- **Do not make assumptions.** If the task is unclear or you have questions, ask the user for clarification before implementing.
+- Resist inferring or guessing requirements; ask instead.
+
+## Incremental Implementation
+
+- When implementing a multi-step plan, **complete one item or step at a time** before moving to the next.
+- Do not proceed to subsequent steps until the user has reviewed and approved the changes for the current step. After each step you must stop and ask the user if they wish to proceed.

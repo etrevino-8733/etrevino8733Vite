@@ -1,0 +1,35 @@
+---
+description: YAGNI principle - implement only when there's a clear, immediate need
+alwaysApply: true
+---
+
+# YAGNI Principle (You Ain't Gonna Need It)
+
+Don't implement functionality until it's actually needed. Focus on **current requirements**; add features only when there's a **clear, immediate need**.
+
+## Guidelines
+
+- **Implement for now, not later**: Build what the current task or requirement asks for. Skip "we might need this someday" code.
+- **No speculative features**: Don't add parameters, options, or code paths "just in case" a future use appears.
+- **Clear need before code**: If there's no concrete requirement or user story for a feature, don't build it yet.
+- **Defer generalization**: Write for the one case you have. Generalize only when a second real case appears.
+
+## Examples
+
+**APIs and parameters**
+- ❌ Adding an optional `format` parameter "for future export formats."
+- ✅ A single behavior that matches the requirement; add options when a second format is actually requested.
+
+**Abstractions**
+- ❌ Introducing a plugin system or interface "so we can swap implementations later."
+- ✅ One implementation that works; refactor to an abstraction when you have a second implementation to support.
+
+**Data and validation**
+- ❌ Validating or storing fields "we might use later."
+- ✅ Model and validate only what the current flow uses.
+
+**Tests and docs**
+- ❌ Writing tests or docs for hypothetical future behavior.
+- ✅ Test and document the behavior that exists and is required now.
+
+When in doubt, ask: "Is there a concrete, current requirement for this?" If not, leave it out until there is.
