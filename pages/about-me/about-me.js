@@ -28,9 +28,7 @@ document.querySelector('#app').innerHTML = `
         <h1>About Me</h1>
         <div class="card glow-on-hover">
             <p>Hi, my name is Emmanuel Trevino.
-                I am a software devoloper who specializes in the development of software solutions for big data companies.  In my experience, I have worked on a variety of projects that have allowed me to develop my skills in programming, data analysis, and machine learning.
-                I have a passion for technology and I am always looking for new ways to improve my skills. I am currently working on a project that involves the development of a software solution for the oil and gas industry. 
-                I am excited to see where this project takes me and I am looking forward to sharing my progress with you.
+                I am a Software Engineer with 7+ years of professional software engineering experience, specializing in scalable cloud systems, high-performance data pipelines, and AI-augmented development workflows. Proven track record of improving application performance by up to 50% and reclaiming 15+ engineering hours per week through automation and architectural improvements.
             </p>
         </div>
     </section>
@@ -49,53 +47,62 @@ document.querySelector('#app').innerHTML = `
             <div class="stack-card glow-on-hover">
                 <h2>Languages</h2>
                 <ul>
-                    <li class="stack-element">HTML</li>
-                    <li class="stack-element">CSS</li>
+                    <li class="stack-element">C#</li>
+                    <li class="stack-element">SQL Server</li>
                     <li class="stack-element">JavaScript</li>
                     <li class="stack-element">TypeScript</li>
-                    <li class="stack-element">C#</li>
-                    <li class="stack-element">SQL</li>
+                    <li class="stack-element">HTML/CSS</li>
                 </ul>
             </div>
             <div class="stack-card glow-on-hover">
-                <h2>Frameworks</h2>
+                <h2>AI & Next-Gen Dev</h2>
+                <ul>
+                    <li class="stack-element">AI-Augmented Development</li>
+                    <li class="stack-element">LLMs</li>
+                    <li class="stack-element">Prompt Engineering</li>
+                    <li class="stack-element">Cursor</li>
+                    <li class="stack-element">Claude Code</li>
+                </ul>
+            </div>
+            <div class="stack-card glow-on-hover">
+                <h2>Backend</h2>
                 <ul>
                     <li class="stack-element">.NET</li>
-                    <li class="stack-element">ASP.NET</li>
-                    <li class="stack-element">ANGULAR</li>
-                    <li class="stack-element">Razor Pages</li>
-                    <li class="stack-element">NUnit</li>
-                </ul>
-            </div>
-            <div class="stack-card glow-on-hover">
-                <h2>Libraries</h2>
-                <ul>
-                    <li class="stack-element">RxJS</li>
-                    <li class="stack-element">JQuery</li>
-                    <li class="stack-element">Bootstrap</li>
-                    <li class="stack-element">PrimeNg</li>
-                </ul>
-            </div>
-            <div class="stack-card glow-on-hover">
-                <h2>Tools</h2>
-                <ul>
-                    <li class="stack-element">Microsoft Sql Server Management Studio</li>
-                    <li class="stack-element">Swagger/Open API</li>
                     <li class="stack-element">Entity Framework</li>
-                    <li class="stack-element">Node.js</li>
-                    <li class="stack-element">NX</li>
-                    <li class="stack-element">Git</li>
-                    <li class="stack-element">DevOps</li>
-                    <li class="stack-element">Selenium</li>
-                    <li class="stack-element">Figma</li>
+                    <li class="stack-element">ClickHouse</li>
+                    <li class="stack-element">PostgrSQL</li>
+                    <li class="stack-element">Swagger</li>
+                    <li class="stack-element">SSMS</li>
                 </ul>
             </div>
             <div class="stack-card glow-on-hover">
-                <h2>Platforms</h2>
+                <h2>Frontend</h2>
                 <ul>
+                    <li class="stack-element">Angular</li>
+                    <li class="stack-element">RxJS</li>
+                    <li class="stack-element">Razor Pages</li>
                     <li class="stack-element">Web Components</li>
+                    <li class="stack-element">PrimeNg</li>
+                    <li class="stack-element">Bootstrap</li>
+                </ul>
+            </div>
+            <div class="stack-card glow-on-hover">
+                <h2>DevOps & Cloud</h2>
+                <ul>
                     <li class="stack-element">Docker</li>
                     <li class="stack-element">Azure</li>
+                    <li class="stack-element">Bicep</li>
+                    <li class="stack-element">Git</li>
+                    <li class="stack-element">Nx</li>
+                    <li class="stack-element">CI/CD</li>
+                </ul>
+            </div>
+            <div class="stack-card glow-on-hover">
+                <h2>Testing</h2>
+                <ul>
+                    <li class="stack-element">NUnit</li>
+                    <li class="stack-element">Jest</li>
+                    <li class="stack-element">Selenium</li>
                 </ul>
             </div>
         </div>
