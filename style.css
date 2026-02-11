@@ -50,6 +50,9 @@ body{
       font-size: 30px;
       color: var(--color);
   }
+  .flip-card {
+    top: 100px;
+  }
 }
 .info-section.left{
   grid-template-columns: 1fr 3fr;
@@ -187,7 +190,7 @@ body{
   background-image: url("./assets/images/logoBackground.jpg");
 }
 
-.card{
+.card {
   padding: 20px;
   margin: 10px 10px 50px 10px;
   border: 1px solid lightgray;
@@ -428,4 +431,65 @@ a:hover{
   border-radius: inherit;
   background: #fff;
   animation: scroll_1 2.75s ease-in-out infinite;
+}
+
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  width: 100%;
+  height: 200px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+
+  h2 {
+    text-align: center;
+  }
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card-content {
+  color: var(--color);
+  background-color: var(--bg-color);
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  padding: 10px 50px;
+  margin: 10px;
+  font-size: small;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+/* Style the back side */
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+.project-details {
+  display: flex;
+  margin-bottom: 200px;
 }

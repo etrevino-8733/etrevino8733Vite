@@ -11,5 +11,11 @@
     <div id="app">
     </div>
     <script type="module" src="./about-me.js"></script>
+    <script>
+      function flipCard(cardId){
+        const card = document.getElementById(cardId);
+        card.classList.toggle('is-flipped');
+      }
+    </script>
   </body>
 </html>

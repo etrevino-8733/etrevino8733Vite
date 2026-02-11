@@ -1,6 +1,4 @@
 import { techStack, welcomeMessage } from "/utils";
-import * as TopNav from "/utils/TopNav/topNav.module";
-import * as TopNavStyle from "/utils/TopNav/topNavStyle.module";
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -28,18 +26,65 @@ document.querySelector('#app').innerHTML = `
         <h1>About Me</h1>
         <div class="card glow-on-hover">
             <p>Hi, my name is Emmanuel Trevino.
-                I am a Software Engineer with 7+ years of professional software engineering experience, specializing in scalable cloud systems, high-performance data pipelines, and AI-augmented development workflows. Proven track record of improving application performance by up to 50% and reclaiming 15+ engineering hours per week through automation and architectural improvements.
-            </p>
+            I am a Software Engineer with experience building backend-heavy, customer-facing web applications and data pipelines for data-intensive products. Strong background in full-stack development, asynchronous and distributed systems, and integrating LLM-powered features into production workflows. Comfortable owning features end-to-end, supporting other engineers, and adapting quickly across languages, frameworks, and complex problem domains.            </p>
         </div>
     </section>
-    <section id="projects" class="info-section right">
-        <div class="card glow-on-hover">
-            <p>This is a feature from the software software I build for an oil company that specializes in scanning and inspecting pipes used in oil wells.  
-                My software helped the client manage and share detaild data of the pitting and rodware for each pipe they scaned at each location. 
-                The software also allowed my client to share the scan data with their customers. Each of their customers had an account on the web application where they could request scan jobs, view invoices through an integration with Quickbooks, and generate reports for each of their well locations.</p>
-            <a class="project-btn" href="/pages/oil-project/oil-project.html">View Feature</a>
-        </div>
+    <section id="projects" class="info-section left">
         <h1>Projects</h1>
+        <div class="project-details">
+            <div id="downhole" class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flip-card-content">
+                            <h2>Downhole Oil Well Scanning & Data Platform</h2>
+                            <p>
+                                Core Purpose: Built a dedicated software solution for an oil well scanning company to manage, analyze, and share critical downhole data, specifically focusing on pitting and rod-wear.
+                            </p>
+                            <h3>Key Functionalities</h3>
+                            <ul>
+                                <li><b>Data Management:</b> Implemented detailed data analytics and reporting tools for well scan results.</li>
+                                <li><b>Collaboration:</b> Enabled secure data sharing between the company and its external customers.</li>
+                                <li><b>Governance & Security:</b> Integrated comprehensive user/customer management, data security protocols, and long-term data retention policies.</li>
+                                <li><b>Business Integration:</b> Developed a specialized QuickBooks integration to streamline administrative and financial tasks.</>
+
+                            </ul>
+                            <div class="flip-card-footer">
+                                <a class="project-btn" href="/pages/oil-project/oil-project.html">View Feature</a> 
+                                <button class="project-btn" onclick="flipCard('downhole')">Show Technical Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card-back">
+                        <div class="flip-card-content">
+                            <h2>Technical Summary</h2>
+                            <ul>
+                                <li>
+                                    Frontend Architecture: Developed a responsive single-page application (SPA) using Angular, utilizing PrimeNG as the primary component library to build complex, data-heavy interfaces like interactive reports and administrative dashboards.
+                                </li>
+                                <li>
+                                    Backend Services: Engineered a robust backend using .NET 8 following an MVC/Web API architectural pattern to provide lightweight, high-performance RESTful endpoints for data consumption.
+                                </li>
+                                <li>
+                                    Data Layer: Designed a specialized Relational Data Model in SQL to ensure strict data integrity and consistency for industrial well-scanning metrics, including complex pitting and rod-wear relationships.
+                                </li>
+                                <li>
+                                    Identity & Access Management: Integrated Keycloak to handle enterprise-grade authentication and authorization, implementing secure role-based access control (RBAC) to protect sensitive client data.
+                                </li>
+                                <li>
+                                    Third-Party Integration: Developed custom middleware to synchronize financial data with QuickBooks, streamlining the transition from technical field reports to business invoicing.
+                                </li>
+                            </ul>
+                            <div class="flip-card-footer">
+                                <a class="project-btn" href="/pages/oil-project/oil-project.html">View Feature</a> 
+                                <button class="project-btn" onclick="flipCard('downhole')">Show Project Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
     <section class="info-section left">
         <h1>Tech Stack</h1>
@@ -114,11 +159,6 @@ document.querySelector('#app').innerHTML = `
         </button>
     </section>
 
-    <script type="text/javascript">
-
-
-
-    </script>
     <script defer id="vertexshader" type="vertex">
         varying vec2 vUv;
         void main() {
@@ -141,8 +181,6 @@ window.onload = async () => {
     var scene = new techStack();
     scene._Init();
     await scene.triggerTechStack();
-
-
 }
 document.addEventListener('DOMContentLoaded', () => {
     let stackItems = document.querySelectorAll('.stack-element');
