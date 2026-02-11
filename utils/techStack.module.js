@@ -17,7 +17,7 @@ import CoffeeShop from './scenes/247_cyberpunk_store_lowres.glb';
 import { BasicCharacterController } from '/utils/characters.module.js';
 
 
-class paramaters{
+class parameters{
     IsAboutMePage = false;
 
     APP_ = null;
@@ -25,7 +25,7 @@ class paramaters{
     previousRAF_ = null;
 
     DEFAULT_MASS = 10;
-    DEFALUT_CAM_POS = new THREE.Vector3(0, 2, 0);
+    DEFAULT_CAM_POS = new THREE.Vector3(0, 2, 0);
     CAM_START_POS = new THREE.Vector3(60, 2, -20);
     TARGET_START_POS = new THREE.Vector3(60, 35, -22);
 
@@ -57,7 +57,7 @@ class paramaters{
 
 export class techStack{    
     constructor(){
-        this.params = new paramaters();
+        this.params = new parameters();
         //this._Init();
     }
     
@@ -81,9 +81,9 @@ export class techStack{
         this.params.renderer.setSize( window.innerWidth , window.innerHeight );
         this.params.renderer.shadowMap.enabled = true;
         this.params.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        this.params.renderer.toneMapping = THREE.CineionToneMapping;
+        this.params.renderer.toneMapping = THREE.CineonToneMapping;
         this.params.renderer.toneMappingExposure = 1.5;
-        this.params.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.params.renderer.outputColorSpace = THREE.SRGBColorSpace;
         
         const progressBar = document.getElementById('progress-bar');
         if(progressBar !== null){
@@ -97,16 +97,6 @@ export class techStack{
         const progressBarContainer = document.querySelector('.progress-bar-container');
         this.params.loadingManager.onLoad = this.loadingManagerFunction(this.params, progressBarContainer, () => { return  this.flickerStack} );
     };
-
-
-    
-    nonBloomed(obj, test){
-        console.log("nonBloom", test);
-        if((obj.isMesh || obj.isPoints) && this.params.bloomLayer.test(obj.layers) === false){
-            materials[obj.uuid] = obj.material;
-            obj.material = darkMaterial;
-        }
-    }
     
     restoreMaterial(obj){
         if(materials[obj.uuid]){
@@ -245,15 +235,15 @@ export class techStack{
 
 
 export class MyWorld{
-    constructor(prams){
-        this.initialize_(prams);
+    constructor(params){
+        this.initialize_(params);
     }
-    initialize_(prams){
+    initialize_(params){
         this._mixers = [];
-        this.prams = prams;
+        this.params = params;
 
         // SET ENVIRONMENT
-        const store = new GLTFLoader(this.prams.loadingManager); store.load(CoffeeShop, function( gltf ) {
+        const store = new GLTFLoader(this.params.loadingManager); store.load(CoffeeShop, function( gltf ) {
             gltf.scene.position.x = 0;
             gltf.scene.position.y = 2;
             gltf.scene.position.z = -20;
@@ -266,7 +256,7 @@ export class MyWorld{
                node.receiveShadow = true;
           
           } );
-          prams.scene.add( gltf.scene);
+          params.scene.add( gltf.scene);
           }, undefined, function ( error ) { console.error(error); });
 
         /// SET GROUND
@@ -274,7 +264,7 @@ export class MyWorld{
         const groundMaterial = new THREE.MeshStandardMaterial( {color: 'black', roughness: 1, metalness: .2} );
         const plane = new THREE.Mesh( groundGeometry, groundMaterial );
         plane.receiveShadow = true;
-        this.prams.scene.add( plane );
+        this.params.scene.add( plane );
 
         function addRain() {
             const geometry = new THREE.SphereGeometry(.05, 10, 10);
@@ -291,15 +281,15 @@ export class MyWorld{
              rainDrop.velocity = {};
              rainDrop.velocity = 0;
              rainDrop.name = 'rain';
-             prams.scene.add(rainDrop)
+             params.scene.add(rainDrop)
           
           }
         
-        if(!this.prams.IsAboutMePage){
+        if(!this.params.IsAboutMePage){
             Array(500).fill().forEach(addRain);
         } else{
-            this.prams.CAM_START_POS = new THREE.Vector3(0, 0, 80);
-            this.prams.TARGET_START_POS = new THREE.Vector3(0, 20, 0);  
+            this.params.CAM_START_POS = new THREE.Vector3(0, 0, 80);
+            this.params.TARGET_START_POS = new THREE.Vector3(0, 20, 0);  
         }
         const stack = [
             {"tech": ["SQL Server", "Mongo DB","Azure", "Docker"]},
@@ -309,34 +299,34 @@ export class MyWorld{
         let height = 1.5;
         let startXPos = -7;
         let longestTech = 0;
+        const fontLoader = new FontLoader(this.params.loadingManager);
+        const neonFont = fontLoader.load('/Tilt Neon_Regular.json');
         for (let x = 0; x < stack.length; x++){
             startXPos = startXPos + (longestTech * height) - height;
             longestTech = 0;
             for (let i = 0; i < stack[x].tech.length; i++){
-                const techYPos = i * height + 15;
+                    const techYPos = i * height + 15;
 
-                const tech = stack[x].tech[i];
-                const techXPos = startXPos;
+                    const tech = stack[x].tech[i];
+                    const techXPos = startXPos;
 
-                if (tech.length > longestTech){
-                    longestTech = tech.length;
-                }
-                const loader = new FontLoader(this.prams.loadingManager);
-                const font = loader.load('/Tilt Neon_Regular.json');
-                loader.load('/Tilt Neon_Regular.json', function(font){
-                    const textGeometry = new TextGeometry(tech, {
-                        font: font,
-                        size: height,
-                        depth: .3,
-                        curveSegments: .01,
-                        bevelEnabled: true,
-                        bevelThickness: .0022,
-                        bevelSize: .001,
-                        bevelOffset: 0,
-                        bevelSegments: 1,
-                        margin: 0.05
-                    });
-                    const textMaterial = new THREE.MeshStandardMaterial({color: prams.secondaryColor, roughness: 1, metalness: 0.05});
+                    if (tech.length > longestTech){
+                        longestTech = tech.length;
+                    }
+                    fontLoader.load('/Tilt Neon_Regular.json', function(neonFont){
+                        const textGeometry = new TextGeometry(tech, {
+                            font: neonFont,
+                            size: height,
+                            depth: .3,
+                            curveSegments: .01,
+                            bevelEnabled: true,
+                            bevelThickness: .0022,
+                            bevelSize: .001,
+                            bevelOffset: 0,
+                            bevelSegments: 1,
+                            margin: 0.05
+                        });
+                    const textMaterial = new THREE.MeshStandardMaterial({color: params.secondaryColor, roughness: 1, metalness: 0.05});
                     const text = new THREE.Mesh(textGeometry, textMaterial);
                     text.castShadow = true;
                     text.receiveShadow = true;
@@ -344,7 +334,7 @@ export class MyWorld{
                     text.quaternion.set(0, 0, 0, 1);
                     text.name = 'text';
 
-                    prams.scene.add(text);
+                    params.scene.add(text);
                 });
             }
         }
@@ -352,8 +342,8 @@ export class MyWorld{
         const logoPositionX = 50;
         const logoPositionZ = -10;
         const logoPositionY = 25;
-        const loader = new FontLoader(this.prams.loadingManager);
-        const font = loader.load('/Michroma_Regular.json');
+        const loader = new FontLoader(this.params.loadingManager);
+        const font = fontLoader.load('/Michroma_Regular.json');
         loader.load('/Michroma_Regular.json', function(font){
             const textGeometryTop = new TextGeometry('ET', {
                 font: font,
@@ -379,24 +369,24 @@ export class MyWorld{
                 bevelSegments: 1,
             });
             const textMaterial = [
-                new THREE.MeshPhongMaterial( { color: prams.primaryColor, flatShading: false, specular: prams.primaryColor, shininess: 100 } ), // front
-                new THREE.MeshPhongMaterial( { color: prams.primaryColorDark } ) // side
+                new THREE.MeshPhongMaterial( { color: params.primaryColor, flatShading: false, specular: params.primaryColor, shininess: 100 } ), // front
+                new THREE.MeshPhongMaterial( { color: params.primaryColorDark } ) // side
             ];
-            prams.topText = new THREE.Mesh(textGeometryTop, textMaterial);
-            prams.textBottom = new THREE.Mesh(textGeometryBottom, textMaterial);
-            prams.textBottom.castShadow = true;
-            prams.textBottom.position.y = logoPositionY;
-            prams.textBottom.position.x = logoPositionX;
-            prams.textBottom.position.z = logoPositionZ;
-            prams.textBottom.name = 'textBottom';
-            prams.scene.add(prams.textBottom);
-            prams.topText.castShadow = true;
-            prams.topText.position.y = logoPositionY + logoSize;
-            prams.topText.position.x = logoPositionX;
-            prams.topText.position.z = logoPositionZ;
-            prams.topText.name = 'topText';
-            prams.scene.add(prams.topText);
-            console.log('LOGO', prams.scene);
+            params.topText = new THREE.Mesh(textGeometryTop, textMaterial);
+            params.textBottom = new THREE.Mesh(textGeometryBottom, textMaterial);
+            params.textBottom.castShadow = true;
+            params.textBottom.position.y = logoPositionY;
+            params.textBottom.position.x = logoPositionX;
+            params.textBottom.position.z = logoPositionZ;
+            params.textBottom.name = 'textBottom';
+            params.scene.add(params.textBottom);
+            params.topText.castShadow = true;
+            params.topText.position.y = logoPositionY + logoSize;
+            params.topText.position.x = logoPositionX;
+            params.topText.position.z = logoPositionZ;
+            params.topText.name = 'topText';
+            params.scene.add(params.topText);
+            console.log('LOGO', params.scene);
 
         });
 
@@ -415,19 +405,19 @@ export class MyWorld{
         if (this._mixers) {
             this._mixers.map(m => m.update(timeElapsedS));
           }
-        if(this.prams.APP_._myCharacter){
-            this.prams.APP_._myCharacter.Update(timeElapsedS);
+        if(this.params.APP_._myCharacter){
+            this.params.APP_._myCharacter.Update(timeElapsedS);
         }
 
-        if(this.prams.SCENECONTROLS_.fpsCamera_ !== undefined){
-            this.prams.SCENECONTROLS_.fpsCamera_.update(timeElapsedS);
+        if(this.params.SCENECONTROLS_.fpsCamera_ !== undefined){
+            this.params.SCENECONTROLS_.fpsCamera_.update(timeElapsedS);
         }
     }
 
     _LoadAnimatedModel() {
         const params = {
-            camera: this.prams.SCENECONTROLS_.camera,
-            scene: this.prams.scene
+            camera: this.params.SCENECONTROLS_.camera,
+            scene: this.params.scene
         }
         this._myCharacter = new BasicCharacterController(params);
     }
@@ -450,7 +440,7 @@ export class MyWorld{
             const idle = m.clipAction(anim.animations[0]);
             idle.play();
             });
-            this.prams.scene.add(fbx);
+            this.params.scene.add(fbx);
         });
     }
     

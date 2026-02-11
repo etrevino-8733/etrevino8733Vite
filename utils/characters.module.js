@@ -353,6 +353,9 @@ class BasicCharacterControllerInput {
       const action = this._parent._proxy._animations['dance'].action;
       
       action.getMixer().removeEventListener('finished', this._CleanupCallback);
+      action.getMixer().removeEventListener('finished', 
+        this._FinishedCallback
+      );
     }
   
     Exit() {

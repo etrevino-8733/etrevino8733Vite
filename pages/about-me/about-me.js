@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function moveItems(item){
-    let transitionSeconds = Math.floor(Math.random() * (1 - 1.5) + 1.5);
+    let transitionSeconds = Math.floor(1 + Math.random() * 0.5);
     item.element.style.transition = 'transform '+ transitionSeconds + 's';
     item.element.style.transitionTimingFunction = 'ease-out';
     item.element.style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';            
@@ -245,7 +245,6 @@ async function setItems(stackItems, stackItemsCoor){
     for(let i = 0; i < stackItems.length; i++){
         let item = stackItems[i];
         let xtrans = Math.floor(Math.random() * (-5000 - -window.innerWidth) +  -window.innerWidth);
-        // let xtrans = Math.floor(Math.random() * (-window.innerWidth - -1000) +  -1000);
 
         stackItemsCoor[item.textContent] = {
             element: item,

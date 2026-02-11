@@ -413,13 +413,13 @@ export class oilProjectGraphics{
         
           scene.add(focusGroup);
           gsap.to(camera.position, {
-            x: focusGroup.children[0].positionX,
-            y: focusGroup.children[0].positionY,
+            x: focusGroup.children[0].position.x,
+            y: focusGroup.children[0].position.y,
             z: 1,
             duration: 1,
             onUpdate: function(){
-              camera.lookAt(focusGroup.children[0].positionX + 5, focusGroup.children[0].positionY, focusGroup.children[0].positionZ + 5);
-              controls.target.set(focusGroup.children[0].positionX + 5, focusGroup.children[0].positionX, focusGroup.children[0].positionX);
+              camera.lookAt(focusGroup.children[0].position.x + 5, focusGroup.children[0].position.y, focusGroup.children[0].position.z + 5);
+              controls.target.set(focusGroup.children[0].position.x + 5, focusGroup.children[0].position.y, focusGroup.children[0].position.z);
             }
           });
         }
