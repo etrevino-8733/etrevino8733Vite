@@ -98,6 +98,7 @@ footer{
   h1 {
     flex-shrink: 0;
     font-size: 60px;
+    margin: 20px 0;
   }
 }
 
@@ -190,7 +191,7 @@ footer{
   }
 
   .top-section{
-    padding-top: 80px;
+    padding-top: 150px;
   }
 }
 
@@ -557,7 +558,7 @@ a:hover{
 }
 
 .sm-text{
-  font-size: 10px;
+  font-size: 15px;
 }
 .md-text{
   font-size: 20px;
@@ -632,4 +633,18 @@ a:hover{
     transition: all 0.2s ease-in;
     transform: translateX(3px);
   }
+}
+
+.pill{
+  display: flex;
+  align-self: center;
+  border-radius: 50vw;
+  width: fit-content;
+  padding: 10px 20px;
+}
+
+.glass-bg{
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.203);
+  -webkit-backdrop-filter: blur(4px);
 }
