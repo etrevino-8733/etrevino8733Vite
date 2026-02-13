@@ -1,4 +1,4 @@
-import { oilProjectGraphics } from "/utils";
+import { oilProjectGraphics } from "/utils/oilProjectGraphics.module.js";
 import * as TopNav from "/utils/TopNav/topNav.module";
 import * as TopNavStyle from "/utils/TopNav/topNavStyle.module";
 

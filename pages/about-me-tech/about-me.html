@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./about-me.js"></script>
+    <script type="module">
+      import * as TopNav from "/utils/TopNav/topNav.module";
+      import * as TopNavStyle from "/utils/TopNav/topNavStyle.module";
+      import { welcomeMessage } from "../../utils/welcomeMessage.module.js";
+      import { techStack } from "../../utils/techStack.module.js";
+
+      welcomeMessage();
+      var scene = new techStack();
+      scene._Init();
+      await scene.triggerTechStack();  
+    </script>
+    <title>About Me | ET Dev</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <div class="home-bg">
+         <canvas id="tech-stack"></canvas>
+         <div class="progress-bar-container">
+             <div id="welcome-message"></div>
+             <label for="progress-bar">Loading Textures... </label>
+             <div class="spinner"></div>
+             <progress id="progress-bar" value="0" max="100"></progress>
+         </div>
+     </div>
+     <header class="header">
+        <et-top-nav nav-items='[{"name": "Home", "link": "/index.html"}, {"name": "About Me", "link": "/#about-me"},{"name": "Projects", "link": "/#projects"}, {"name": "Technology", "link": "/#tech"}]'>
+        </et-top-nav>
+     </header>
+     <span class="scroll-icon">
+         <span class="scroll-icon__wheel-outer">
+           <span class="scroll-icon__wheel-inner"></span>
+         </span>
+     </span>
+     <section class="info-section" style="height: 100vh;">
+     </section>
+     <section class="info-section left">
+         <h1>About Me</h1>
+         <div class="card glow-on-hover">
+             <p>Hi, my name is Emmanuel Trevino.
+             I am a Software Engineer with experience building backend-heavy, customer-facing web applications and data pipelines for data-intensive products. Strong background in full-stack development, asynchronous and distributed systems, and integrating LLM-powered features into production workflows. Comfortable owning features end-to-end, supporting other engineers, and adapting quickly across languages, frameworks, and complex problem domains.            </p>
+         </div>
+     </section>
+     <section id="projects" class="info-section left">
+         <h1>Projects</h1>
+         <div class="project-details">
+             <div id="downhole" class="flip-card">
+                 <div class="flip-card-inner">
+                     <div class="flip-card-front">
+                         <div class="flip-card-content">
+                             <h2>Downhole Oil Well Scanning & Data Platform</h2>
+                             <p>
+                                 Core Purpose: Built a dedicated software solution for an oil well scanning company to manage, analyze, and share critical downhole data, specifically focusing on pitting and rod-wear.
+                             </p>
+                             <h3>Key Functionalities</h3>
+                             <ul>
+                                 <li><b>Data Management:</b> Implemented detailed data analytics and reporting tools for well scan results.</li>
+                                 <li><b>Collaboration:</b> Enabled secure data sharing between the company and its external customers.</li>
+                                 <li><b>Governance & Security:</b> Integrated comprehensive user/customer management, data security protocols, and long-term data retention policies.</li>
+                                 <li><b>Business Integration:</b> Developed a specialized QuickBooks integration to streamline administrative and financial tasks.</li>
+ 
+                             </ul>
+                             <div class="flip-card-footer">
+                                 <a class="project-btn" href="/pages/oil-project/oil-project.html">View Feature</a> 
+                                 <button class="project-btn" onclick="flipCard('downhole')">Show Technical Details</button>
+                             </div>
+                         </div>
+                     </div>
+ 
+                     <div class="flip-card-back">
+                         <div class="flip-card-content">
+                             <h2>Technical Summary</h2>
+                             <ul>
+                                 <li>
+                                     Frontend Architecture: Developed a responsive single-page application (SPA) using Angular, utilizing PrimeNG as the primary component library to build complex, data-heavy interfaces like interactive reports and administrative dashboards.
+                                 </li>
+                                 <li>
+                                     Backend Services: Engineered a robust backend using .NET 8 following an MVC/Web API architectural pattern to provide lightweight, high-performance RESTful endpoints for data consumption.
+                                 </li>
+                                 <li>
+                                     Data Layer: Designed a specialized Relational Data Model in SQL to ensure strict data integrity and consistency for industrial well-scanning metrics, including complex pitting and rod-wear relationships.
+                                 </li>
+                                 <li>
+                                     Identity & Access Management: Integrated Keycloak to handle enterprise-grade authentication and authorization, implementing secure role-based access control (RBAC) to protect sensitive client data.
+                                 </li>
+                                 <li>
+                                     Third-Party Integration: Developed custom middleware to synchronize financial data with QuickBooks, streamlining the transition from technical field reports to business invoicing.
+                                 </li>
+                             </ul>
+                             <div class="flip-card-footer">
+                                 <a class="project-btn" href="/pages/oil-project/oil-project.html">View Feature</a> 
+                                 <button class="project-btn" onclick="flipCard('downhole')">Show Project Details</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+ 
+     </section>
+     <section class="info-section left">
+         <h1>Tech Stack</h1>
+         <div class="stack-container">
+             <div class="stack-card glow-on-hover">
+                 <h2>Languages</h2>
+                 <ul>
+                     <li class="stack-element">C#</li>
+                     <li class="stack-element">SQL Server</li>
+                     <li class="stack-element">JavaScript</li>
+                     <li class="stack-element">TypeScript</li>
+                     <li class="stack-element">HTML/CSS</li>
+                 </ul>
+             </div>
+             <div class="stack-card glow-on-hover">
+                 <h2>AI & Next-Gen Dev</h2>
+                 <ul>
+                     <li class="stack-element">AI-Augmented Development</li>
+                     <li class="stack-element">LLMs</li>
+                     <li class="stack-element">Prompt Engineering</li>
+                     <li class="stack-element">Cursor</li>
+                     <li class="stack-element">Claude Code</li>
+                 </ul>
+             </div>
+             <div class="stack-card glow-on-hover">
+                 <h2>Backend</h2>
+                 <ul>
+                     <li class="stack-element">.NET</li>
+                     <li class="stack-element">Entity Framework</li>
+                     <li class="stack-element">ClickHouse</li>
+                     <li class="stack-element">PostgrSQL</li>
+                     <li class="stack-element">Swagger</li>
+                     <li class="stack-element">SSMS</li>
+                 </ul>
+             </div>
+             <div class="stack-card glow-on-hover">
+                 <h2>Frontend</h2>
+                 <ul>
+                     <li class="stack-element">Angular</li>
+                     <li class="stack-element">RxJS</li>
+                     <li class="stack-element">Razor Pages</li>
+                     <li class="stack-element">Web Components</li>
+                     <li class="stack-element">PrimeNg</li>
+                     <li class="stack-element">Bootstrap</li>
+                 </ul>
+             </div>
+             <div class="stack-card glow-on-hover">
+                 <h2>DevOps & Cloud</h2>
+                 <ul>
+                     <li class="stack-element">Docker</li>
+                     <li class="stack-element">Azure</li>
+                     <li class="stack-element">Bicep</li>
+                     <li class="stack-element">Git</li>
+                     <li class="stack-element">Nx</li>
+                     <li class="stack-element">CI/CD</li>
+                 </ul>
+             </div>
+             <div class="stack-card glow-on-hover">
+                 <h2>Testing</h2>
+                 <ul>
+                     <li class="stack-element">NUnit</li>
+                     <li class="stack-element">Jest</li>
+                     <li class="stack-element">Selenium</li>
+                 </ul>
+             </div>
+         </div>
+     </section>
+ 
+     <section class="info-section">
+         <button style="font-size: xx-large;" class="release-the-moster danger-button">
+             DO NOT CLICK!
+         </button>
+     </section>
+    </div>
+
+  <script defer id="vertexshader" type="vertex">
+    varying vec2 vUv;
+    void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
+  </script>
+  <script defer id="fragmentshader" type="fragment">
+      uniform sampler2D baseTexture;
+      uniform sampler2D bloomTexture;
+      varying vec2 vUv;
+      void main() {
+          gl_FragColor = (texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ));
+      }
+  </script>
+  </body>
+</html>
