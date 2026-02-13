@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="./about-me.js"></script>
     <script type="module">
-      import * as TopNav from "/utils/TopNav/topNav.module";
-      import * as TopNavStyle from "/utils/TopNav/topNavStyle.module";
-      import { welcomeMessage } from "../../utils/welcomeMessage.module.js";
-      import { techStack } from "../../utils/techStack.module.js";
+        import * as TopNav from "/utils/TopNav/topNav.module";
+        import * as TopNavStyle from "/utils/TopNav/topNavStyle.module";
+        import { welcomeMessage } from "../../utils/welcomeMessage.module.js";
+        import { techStack } from "../../utils/techStack.module.js";
 
-      welcomeMessage();
-      var scene = new techStack();
-      scene._Init();
-      await scene.triggerTechStack();  
+        welcomeMessage();
+        var scene = new techStack();
+        scene._Init();
+        scene.triggerTechStack();  
     </script>
     <title>About Me | ET Dev</title>
   </head>
