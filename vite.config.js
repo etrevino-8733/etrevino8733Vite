@@ -8,7 +8,8 @@ export default {
         rollupOptions: {
             input: {
                 main: './index.html',
-                aboutme: resolve(__dirname, 'pages/about-me/about-me.html'),
+                aboutme: resolve(__dirname, 'pages/about-me-tech/about-me.html'),
+                threejs: resolve(__dirname, 'pages/three-js-project/three-js-project.html'),
                 oilproject: resolve(__dirname, 'pages/oil-project/oil-project.html'),
             }
         }
