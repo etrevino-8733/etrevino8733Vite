@@ -1,10 +1,14 @@
+html{
+  scroll-behavior: smooth;
+}
+
 
 body{
   --bg-color: #FBFAFA;
   --bg-card: #ffffff;
   --color: #919295;
   --border-color: #074DD9;
-  --primary-color: #074DD9;
+  --primary-color: #206aff;
   --primary-dark: #052158;
   --highlight-background: #e4e8ea;
   --highlight-primary: #3779ff;
@@ -81,7 +85,7 @@ footer{
   align-content: center;
   text-align: center;
   color: var(--bg-color);
-  padding: 20px 60px;
+  padding: 40px 60px 20px 60px;
 }
 
 .top-section-container{
@@ -131,17 +135,6 @@ footer{
 }
 
 
-/* .et-button{
-  background-color: inherit;
-  color: var(--color);
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 6px;
-  border: none;
-
-  transition: all 0.3s ease-in-out;
-  text-decoration: none;
-} */
 
 .danger-button{
   color: white;
@@ -169,10 +162,6 @@ footer{
   background-color: rgba(255, 0, 0, 0.153);
 }
 
-.et-button:hover{
-  transform: scale(1.05);
-}
-
 .project-btn{
   background-color: var(--primary-color);
   color: white;
@@ -190,10 +179,6 @@ footer{
   box-shadow: none;
 }
 
-.et-button:hover{
-  background-color: var(--bg-card);
-}
-
 
 @media only screen and (max-width: 1500px) {
 
@@ -202,6 +187,10 @@ footer{
 @media only screen and (max-width: 1200px)  {
   .flip-card-header img{
     max-width: 250px;
+  }
+
+  .top-section{
+    padding-top: 80px;
   }
 }
 
@@ -256,8 +245,12 @@ footer{
 }
 .stack-card ul li{
   &::marker {
-    color: var(--primary-color);
+    color: #507ace;
   }
+}
+
+.stack-card:hover .tech-stack-icon{
+  transform: scale(1.2);
 }
 .tech-stack-icon{
   background: #074DD9;
@@ -270,6 +263,7 @@ footer{
   justify-content: center;
   display: flex;
   padding: 6px; 
+  transition: all 0.2s ease-in;
 }
 
 
@@ -294,7 +288,7 @@ a:hover{
   border: none;
   margin: -50px 15px 10px auto;
 
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in;
   text-decoration: none;
   z-index: 4;
 }
@@ -335,7 +329,7 @@ a:hover{
   justify-content: center;
   align-items: center;
 
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in;
 }
 
 #progress-bar {
@@ -348,7 +342,7 @@ a:hover{
   opacity: 0;
   font-size: 3em;
   font-weight: 600;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -379,7 +373,7 @@ a:hover{
   height: 100%;
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity .2s ease-in;
   border-radius: 10px;
   border: none;
 }
@@ -432,7 +426,7 @@ a:hover{
   width: 1.5em;
   border: .25em solid #fff;
   border-radius: 1em;
-  transition: all 1s ease-in-out;
+  transition: all 1s ease-in;
   z-index: 999;
 }
 .scroll-icon__wheel-outer {
@@ -491,8 +485,6 @@ a:hover{
   font-size: small;
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
 
-
-
   &:hover .flip-card-header img{
     /* Scale the image up (1.2 means 120% of original size) */
     transform: scale(1.2); 
@@ -502,11 +494,8 @@ a:hover{
 }
 
 .flip-card-header img{
-      /* Scale the image up (1.2 means 120% of original size) */
       transform: scale(1); 
-      /* Webkit prefix for older browser support (optional) */
       -webkit-transform: scale(1);
-      
       transition: all .3s ease-in-out;
       flex-shrink: 0; 
       min-width: 100%; 
@@ -534,7 +523,7 @@ a:hover{
 
 .flip-card-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 5px;
   padding: 0 30px;
 }
@@ -556,7 +545,7 @@ a:hover{
   gap: 50px;
   align-items: center;
   justify-content: center;
-  padding-top: 60px;
+  padding: 20px 0;
 }
 
 .title-text{
@@ -581,21 +570,66 @@ a:hover{
   font-size: 60px;
 }
 
-button, .et-button{
-  background: #074DD9;
-  background: linear-gradient(139deg, rgba(7, 77, 217, 1) 0%, rgba(87, 199, 173, 1) 0%, rgba(7, 77, 217, 1) 100%);
-  color: white;
-  padding: 10px;
+.button{
+  padding:  5px 15px;
   cursor: pointer;
   border-radius: 6px;
-  border: none;
-  box-shadow: 2px 2px 0px rgba(195, 195, 195, 0.725);
-
-  transition: all 0.3s ease-in-out;
+  border: #a7a7a7 solid;
+  transition: all 0.2s ease-in;
   text-decoration: none !important;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  .material-symbols-outlined{
+    font-size: inherit;
+    font-weight: inherit;
+  }
 
   &:hover{
-    transform: scale(.99);
-    box-shadow: none;
+    background-color: var(--hover-color);
+  }
+}
+
+.secondary-button{
+  background-color: inherit;
+  color: var(--color);
+  --hover-color: #ececec;
+}
+
+.primary-button{
+  background-color: white;
+  color: var(--primary-color);
+  --hover-color: #f1f5fc ;
+}
+
+.lg-button{
+  font-size: large;
+  padding: 10px 20px;
+}
+
+.primary-button, .seconary-button{
+
+}
+
+.flex-center{
+  padding: 20px 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+.grow-on-hover:hover{
+
+  .material-symbols-outlined{
+    transition: all 0.2s ease-in;
+    transform: scale(1.2);
+  }
+}
+.point-on-hover:hover{
+
+  .material-symbols-outlined{
+    transition: all 0.2s ease-in;
+    transform: translateX(3px);
   }
 }
