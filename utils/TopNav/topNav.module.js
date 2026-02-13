@@ -25,7 +25,7 @@ template.innerHTML = `
                 position: relative;
                 display: flex;
                 padding: 4px 12px;
-                height: 60px;
+                height: 25px;
                 align-items: center;
                 z-index: 999;
                 gap: 10px;
@@ -33,7 +33,7 @@ template.innerHTML = `
             .main-nav{
                 margin-left: auto;
                 font-weight: 600;
-                color: var(--color);
+                color: inherit;
             }
             .main-nav ul{
                 list-style-type: none;
@@ -45,7 +45,7 @@ template.innerHTML = `
 
             .nav-button{
                 background-color: inherit;
-                color: var(--color);
+                color: inherit;
                 padding: 10px;
                 cursor: pointer;
                 border-radius: 6px;
@@ -91,8 +91,18 @@ template.innerHTML = `
             }
 
             .et-button:hover{
-                background: rgba(0,0,0,0.8);
-                backdrop-filter: saturate(180%) blur(10px);            
+                // background: var(--highlight-background);
+                // backdrop-filter: saturate(180%) blur(10px);
+                color: var(--highlight-primary)
+            }
+
+            #logoSmallBox {
+                background: linear-gradient(139deg, rgba(7, 77, 217, 1) 0%, rgba(87, 199, 173, 1) 0%, rgba(7, 77, 217, 1) 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                -webkit-text-fill-color: transparent;
+                font-weight: 700;
             }
 
 
@@ -118,7 +128,7 @@ template.innerHTML = `
                 </nav>
             </div>
             <div id="logoSmallBox">
-                <span>ET DEV</span>
+                <span>Emmanuel Trevino</span>
             </div>
             <nav class="main-nav">
                 <ul id="nav-item-list">

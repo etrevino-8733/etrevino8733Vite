@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/style.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ET DEV</title>
+  </head>
+  <body>
+    <div id="app">
+        <header class="header">
+            <et-top-nav nav-items='[{"name": "Home", "link": "/index.html"}, {"name": "About Me", "link": "/#about-me"},{"name": "Projects", "link": "/#projects"}, {"name": "Technology", "link": "/#tech"}]'>
+            </et-top-nav>
+        </header>
+        <div id="tech-stack-container" tabindex="1">
+            <canvas id="tech-stack"></canvas>
+            <div class="progress-bar-container">
+                <div id="welcome-message"></div>
+                <label for="progress-bar">Loading Textures... </label>
+                <div class="spinner"></div>
+                <progress id="progress-bar" value="0" max="100"></progress>
+            </div>
+        </div>
+        <script defer id="vertexshader" type="vertex">
+            varying vec2 vUv;
+            void main() {
+                vUv = uv;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+            }
+        </script>
+        <script defer id="fragmentshader" type="fragment">
+            uniform sampler2D baseTexture;
+            uniform sampler2D bloomTexture;
+            varying vec2 vUv;
+            void main() {
+                gl_FragColor = (texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ));
+            }
+        </script>
+    </div>
+    <script type="module" src="./three-js-project.js"></script>
+  </body>
+</html>
