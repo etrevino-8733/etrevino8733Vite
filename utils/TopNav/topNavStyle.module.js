@@ -60,7 +60,7 @@ TopNavStyle.textContent = `
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1200px) {
     .collapsible-nav{
         display: block !important;
     }
