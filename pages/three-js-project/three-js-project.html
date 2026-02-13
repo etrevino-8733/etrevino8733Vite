@@ -9,12 +9,14 @@
   </head>
   <body>
     <div id="app">
-        <header class="header">
-            <et-top-nav nav-items='[{"name": "Home", "link": "/index.html"}, {"name": "About Me", "link": "/#about-me"},{"name": "Projects", "link": "/#projects"}, {"name": "Technology", "link": "/#tech"}]'>
-            </et-top-nav>
-        </header>
+
         <div id="tech-stack-container" tabindex="1">
             <canvas id="tech-stack"></canvas>
+            <header>
+                <div class="nav-bar">
+                  <et-top-nav nav-items='[{"name": "Home", "link": "/index.html"}, {"name": "About Me", "link": "/#about-me"},{"name": "Projects", "link": "/#projects"}, {"name": "Technology", "link": "/#tech"}]'>
+                </div>
+            </header>
             <div class="progress-bar-container">
                 <div id="welcome-message"></div>
                 <label for="progress-bar">Loading Textures... </label>

@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="/style.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/main.js"></script>
+    <script type="text/javascript" defer>
+        function flipCard(cardId){
+        const card = document.getElementById(cardId);
+            card.classList.toggle('is-flipped');
+        }
+    </script>
     <script type="module">
       import * as TopNav from "/utils/TopNav/topNav.module";
       import * as TopNavStyle from "/utils/TopNav/topNavStyle.module";
@@ -17,7 +22,7 @@
     <div id="app">
       <div>
         <header class="header">
-            <div class="nav-bar dark">
+            <div class="nav-bar">
                 <et-top-nav nav-items='[{"name": "Home", "link": "/index.html"}, {"name": "About Me", "link": "#about-me"},{"name": "Projects", "link": "#projects"}, {"name": "Technology", "link": "#tech"}]'>
                 </et-top-nav>
             </div>
@@ -52,7 +57,7 @@
         </section>
         <section id="about-me" class="info-section">
             <h1>About Me</h1>
-            <div class="card">
+            <div style="text-align: left;">
                 <p>Hi, my name is Emmanuel Trevino.
                 I am a Software Engineer with experience building backend-heavy, customer-facing web applications and data pipelines for data-intensive products. Strong background in full-stack development, asynchronous and distributed systems, and integrating LLM-powered features into production workflows. Comfortable owning features end-to-end, supporting other engineers, and adapting quickly across languages, frameworks, and complex problem domains.            </p>
             </div>
@@ -66,7 +71,7 @@
                             <div class="flip-card-front">
                                 <div class="flip-card-content">
                                     <div class="flip-card-header">
-                                        <img src="/public/oil_well.jpg" alt="image of a pumpjack">
+                                        <img src="/oil_well.jpg" alt="image of a pumpjack">
                                     </div>
                                     <div class="flip-card-body">
                                         <h2>Downhole Oil Well Scanning & Data Platform</h2>
@@ -127,7 +132,7 @@
                             <div class="flip-card-front">
                                 <div class="flip-card-content">
                                     <div class="flip-card-header">
-                                        <img src="/public/threejs.png" alt="image of a pumpjack">
+                                        <img src="/threejs.jpg" alt="image of a pumpjack">
                                     </div>
                                     <div class="flip-card-body">
                                         <h2>3D Graphics</h2>

@@ -28,11 +28,7 @@ footer{
   position: fixed;
 }
 .info-section{
-
-  /* position: relative; */
-  margin-bottom: 60px;
-  text-align: center;
-  padding: 0 35px 0 35px;
+  padding: 20px 35px 50px 35px;
 
   h1{
       margin-top: 50px;
@@ -46,12 +42,12 @@ footer{
   }
   .stack-card:hover{
       border-color: transparent;
-      transform: scale(1.02);
-  }
+      transform: scale(1);
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  }
   .card:hover{
       border-color: transparent;
-      transform: scale(1.02);
-  }
+      transform: scale(1);
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  }
   .card p{
       padding: 0 60px;
       top: 100px;
@@ -61,6 +57,16 @@ footer{
   .flip-card {
     top: 100px;
   }
+}
+
+/* Color for even rows */
+.info-section:nth-child(even) {
+  background-color: #ffffff; /* A light grey shade */
+}
+
+/* Color for odd rows (optional, if you want a specific color other than the default) */
+.info-section:nth-child(odd) {
+  background-color: var(--bg-color); 
 }
 
 .body{
@@ -194,8 +200,8 @@ footer{
 }
 
 @media only screen and (max-width: 1200px)  {
-  .info-section{
-      padding: 10px;
+  .flip-card-header img{
+    max-width: 250px;
   }
 }
 
@@ -221,7 +227,7 @@ footer{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
 }
@@ -329,7 +335,7 @@ a:hover{
   justify-content: center;
   align-items: center;
 
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #progress-bar {
@@ -342,7 +348,7 @@ a:hover{
   opacity: 0;
   font-size: 3em;
   font-weight: 600;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -462,10 +468,6 @@ a:hover{
   height: auto;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-
-  h2 {
-    text-align: center;
-  }
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -483,12 +485,13 @@ a:hover{
 .flip-card-content {
   color: var(--color);
   background-color: var(--bg-card);
-  border: 1px solid lightgray;
   border-radius: 25px;
   padding: 0 0 30px 0;
   margin: 10px;
   font-size: small;
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+
+
 
   &:hover .flip-card-header img{
     /* Scale the image up (1.2 means 120% of original size) */
@@ -504,10 +507,11 @@ a:hover{
       /* Webkit prefix for older browser support (optional) */
       -webkit-transform: scale(1);
       
-      transition: transform .5s ease-in-out;
+      transition: all .3s ease-in-out;
       flex-shrink: 0; 
       min-width: 100%; 
       min-height: 100%; 
+      overflow: hidden;
 }
 
 
@@ -541,6 +545,7 @@ a:hover{
 }
 .project-container {
   display: grid; 
+  gap: 40px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
