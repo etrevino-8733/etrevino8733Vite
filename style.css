@@ -197,6 +197,9 @@ footer{
   .info-section{
       padding: 10px;
   }
+  .flip-card-header img{
+    max-width: 250px;
+  }
 }
 
 #logoSmallBox{
@@ -508,6 +511,7 @@ a:hover{
       flex-shrink: 0; 
       min-width: 100%; 
       min-height: 100%; 
+      overflow: hidden;
 }
 
 
