@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "threejs-animation": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-animation/SKILL.md",
+      "computedHash": "8c50b1493812bd88f3ed0637c0c3c5d846afdb322157b67b2ffba4ce8e552835"
+    },
+    "threejs-fundamentals": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-fundamentals/SKILL.md",
+      "computedHash": "e08d49571071f0f54ef2a76fdfcb96c16673e4fda478067727def4659feb80ca"
+    },
+    "threejs-interaction": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-interaction/SKILL.md",
+      "computedHash": "988d235b7ebd85276a584c6f81ce7c801280ebc45b401017b334136dc8a7ec82"
+    },
+    "threejs-materials": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-materials/SKILL.md",
+      "computedHash": "201cf0f3720c0ea9e415e6376b8ad389aa86b483875e87ca0e51aa2770c856aa"
+    }
+  }
+}

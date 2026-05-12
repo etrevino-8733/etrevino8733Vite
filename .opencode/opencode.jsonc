@@ -1,0 +1,45 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    ".opencode/rules/simplicity-principles.md",
+    ".opencode/rules/agent-task-discipline.md",
+    ".opencode/rules/test-rule.md"
+  ],
+  "agent": {
+    "architect": {
+      "description": "High-level architectural decision-maker.",
+      "model": "opencode/nemotron-3-super-free", // Use the exact string from your /models list
+      "prompt": "You are a Senior Systems Architect. Analyze proposed code approaches, research pros/cons, and provide a recommendation with a confidence score (1-10). Always explain your reasoning path.",
+      "tools": {
+        "websearch": true,
+        "write": false // Keeping it read-only for reasoning
+      }
+    },
+    "ask": {
+      "description": "Uses its intrenal knowledge and searches the web to provide high quality answers to the users questions.",
+      "model": "opencode/nemotron-3-super-free", // Use the exact string from your /models list
+      "prompt": "You are an expert reasearcher in technology. Focus on providing truthful, quality and cited answers to any question the users asks. Use the web to search official technology documentation only to help you answer questions you do not know the answer to.",
+      "tools": {
+        "websearch": true,
+        "write": false, // Keeping it read-only for reasoning
+        "edit": false
+      },
+      "temprature": 0.2
+    }
+  },
+  "provider": {
+    // "nvidia": {
+    //   "name": "NVIDIA NIM",
+    //   "options": {
+    //     "baseURL": "https://integrate.api.nvidia.com/v1"
+    //   }
+    // }
+    // Alternatively, if using OpenRouter:
+    // "openrouter": {
+    //   "name": "OpenRouter",
+    //   "options": {
+    //     "baseURL": "https://openrouter.ai"
+    //   }
+    // }
+  }
+}
